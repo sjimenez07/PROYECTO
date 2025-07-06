@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Catálogo de Videojuegos</title>
+        <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+    </head>
+    <body>
+
+        <!-- Header -->
+        <header th:fragment="header">
+            <h1>Mi Tienda de Videojuegos</h1>
+            <nav>
+                <a th:href="@{/}">Inicio</a>
+                <a th:href="@{/catalogo}">Catálogo</a>
+                <a th:href="@{/contacto}">Contacto</a>
+            </nav>
+        </header>
+
+        <!-- Contenido principal -->
+        <main>
+            <h2>Catálogo de Videojuegos</h2>
+            <p>Aquí podrás explorar todos los videojuegos disponibles en nuestra tienda.</p>
+
+
+            <div class="catalogo-container">
+                <div class="card-list">
+                    <a href="#" class="card-item elden-ring">
+                        <div class="card-image"></div>
+                        <span class="developer">RPG</span>
+                        <h3>ELDEN RING</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item ea-sports">
+                        <div class="card-image"></div>
+                        <span class="designer">Sports Sim</span>
+                        <h3>EA SPORTS: FC 25</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item hollow-knight">
+                        <div class="card-image"></div>
+                        <span class="editor">Indie</span>
+                        <h3>Hollow Knight</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item pc-building-sim-2">
+                        <div class="card-image"></div>
+                        <span class="editor">Simulator</span>
+                        <h3>PC Building Simulator 2</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item ufc">
+                        <div class="card-image"></div>
+                        <span class="editor">Fights</span>
+                        <h3>UFC 5</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item Rematch">
+                        <div class="card-image"></div>
+                        <span class="editor">Sports Sim</span>
+                        <h3>Rematch</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item resident-evil-9">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Resident Evil 9</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item dead-by-daylight">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Dead by Daylight</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item dying-light">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Dying Light</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item assassin-creed-shadows">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Assassin Creed Shadows</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item B2K-25">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>2K25</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item marvel-spiderman">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Marvel's Spider-Man</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item marvel-spiderman-miles">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Marvel's Spider-Man Miles Morales</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item marvel-spiderman-2">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Marvel's Spider-Man 2</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item the-last-of-us">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>The Last of Us</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item the-last-of-us-2">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>The Last of Us 2</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item call-of-duty">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Call of Duty</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item cyberpunk-2077">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Cyberpunk 2077</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item red-dead-redemption">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Red Dead Redemption</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item red-dead-redemption-2">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Red Dead Redemption 2</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item baldurs-gate-3">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item helldivers-2">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Helldivers 2</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item black-myth-wukong">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Black Myth: Wukong</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item repo">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>R.E.P.O.</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item schedule-1">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Schedule 1</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="card-item mortal-kombat-1">
+                        <div class="card-image"></div>
+                        <span class="editor">Survival</span>
+                        <h3>Mortal Kombat 1</h3>
+                        <div class="arrow">
+                            <i class="fas fa-arrow-right card-icon"></i>
+                        </div>
+                        <a href="#" class="card-item dragon-ball-sparking-zero">
+                            <div class="card-image"></div>
+                            <span class="editor">Survival</span>
+                            <h3>Dragon Ball Sparking Zero</h3>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right card-icon"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="card-item the-binding-of-isaac">
+                            <div class="card-image"></div>
+                            <span class="editor">Survival</span>
+                            <h3>The Binding of Isaac: Repentance</h3>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right card-icon"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="card-item doom-dark-ages">
+                            <div class="card-image"></div>
+                            <span class="editor">Survival</span>
+                            <h3>DOOM The Dark Ages</h3>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right card-icon"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="card-item ghost-of-tsushima">
+                            <div class="card-image"></div>
+                            <span class="editor">Survival</span>
+                            <h3>Ghost Of Tsushima</h3>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right card-icon"></i>
+                            </div>
+                        </a>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer th:fragment="footer">
+            <p>© 2025 Videojuegos Inc. Todos los derechos reservados.</p>
+        </footer>
+
+    </body>
+</html>
+

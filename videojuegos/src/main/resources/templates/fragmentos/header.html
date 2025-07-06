@@ -1,0 +1,18 @@
+<!DOCTYPE html
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <header th:fragment="header">
+        <h1>Mi Tienda de Videojuegos</h1>
+        <nav>
+            <a th:href="@{/}">Inicio</a>
+            <a th:href="@{/catalogo}">Catálogo</a>
+            <a th:href="@{/contacto}">Contacto</a>
+        </nav>
+    </header>
+
+</body>
+</html>

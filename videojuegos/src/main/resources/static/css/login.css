@@ -1,0 +1,129 @@
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* Cuerpo */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f4;
+    color: #00192a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* HEADER */
+header {
+    background-color: #00192a;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+
+
+nav a {
+    color: #f4f4f4;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+
+
+nav a:hover {
+    color: #007cd0;
+}
+
+
+
+/* MAIN */
+main {
+    flex: 1;
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem;
+}
+
+
+
+/* FOOTER */
+footer {
+    background-color: #00192a;
+    color: #f4f4f4;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-top: 2px solid #007cd0;
+    margin-top: auto;
+}
+
+
+
+/* Menú con tarjetas */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+
+
+.card-menu {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+
+
+.card-menu:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+
+
+.card-menu h3 {
+    margin-bottom: 1rem;
+}
+
+
+
+.card-menu a {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #007cd0;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.card-menu a:hover {
+    background-color: #005a9e;
+}

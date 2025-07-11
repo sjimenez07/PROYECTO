@@ -1,52 +1,39 @@
-<!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-        
-            <head>
-                <meta charset="UTF-8">
-                <title>Página Principal</title>
-                <link rel="stylesheet" th:href="@{/css/estilos.css}" />
-            </head>
-            
-
-        <body>
-            
-            <header th:fragment="header">
-                <h1>Mi Tienda de Videojuegos</h1>
-                <nav>
-                    <a th:href="@{/}">Inicio</a>
-                    <a th:href="@{/catalogo}">Catálogo</a>
-                    <a th:href="@{/contacto}">Contacto</a>
-                </nav>
-            </header>
-            
-            <main>
-                <h2>Bienvenido a la plataforma de videojuegos</h2>
-                <p>Explora nuestras últimas novedades, ofertas y lanzamientos exclusivos en un solo lugar.</p>
-
-                <div class="menu-grid">
-                    <div class="card-menu">
-                        <h3>Catálogo</h3>
-                        <a th:href="@{/catalogo}">Ver productos</a>
-                    </div>
-                    <div class="card-menu">
-                        <h3>Nosotros</h3>
-                        <a th:href="@{/nosotros}">Conócenos</a>
-                    </div>
-                    <div class="card-menu">
-                        <h3>Contacto</h3>
-                        <a th:href="@{/contacto}">Contáctanos</a>
-                    </div>
-                    <div class="card-menu">
-                        <h3>Carrito</h3>
-                        <a th:href="@{/carrito}">Ver carrito</a>
-                    </div>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ingresa Sesión</title>
+        <link th:href="@{/css/login.css}" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <form action="#">
+                <h2>Log In</h2>
+                <div class="input-field">
+                    <input type="text" required>
+                    <label>Ingresa el Email</label>
                 </div>
-            </main>
-  
-            <footer th:fragment="footer">
-                <p>© 2025 Videojuegos Inc. Todos los derechos reservados.</p>
-            </footer>
-        </body>        
+                <div class="input-field">
+                    <input type="password" required>
+                    <label>Ingresa la contraseña</label>    
+                </div>
+                <div class="Olvida">
+                    <label for="remember">
+                        <input type="checkbox" id="Recordar">
+                        <p>Recuerdame</p>
+                    </label>
+                    <a href="#">Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit">
+                    Log In
+                    <i class="bi bi-caret-right-fill" aria-hidden="true"></i>
+                </button>
+                <div class="register">
+                    <p>¿No tienes una cuenta? <a href="#">Registrarse</a></p>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
-
+<script>
+</script>

@@ -119,82 +119,82 @@ footer {
 
 /* Tarjetas con imagen */
 .card-item.elden-ring .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('developer.jpg');
 }
 .card-item.ea-sports .card-image {
-    background-image: url('/images/designer.jpg');
+    background-image: url('designer.jpg');
 }
 .card-item.hollow-knight .card-image {
-    background-image: url('/images/hollow-knight.jpg');
+    background-image: url('hollow-knight.jpg');
 }
 .card-item.pc-building-sim-2 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('PCB.jpg');
 }
 .card-item.ufc .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('ufc5.jpg');
 }
 .card-item.resident-evil-9 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('resident-evil9.jpg');
 }
 .card-item.dead-by-daylight .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('R.jpg');
 }
 .card-item.dying-light .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('dyinglight.jpg');
 }
 .card-item.assassin-creed-shadows .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('ASS.jpg');
 }
 .card-item.B2K-25 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('B2K25.jpg');
 }
 .card-item.marvel-spiderman .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('MSMN.jpg');
 }
 .card-item.marvel-spiderman-miles .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('MSMM.jpg');
 }
 .card-item.marvel-spiderman-2 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('MSMN2.jpg');
 }
 .card-item.the-last-of-us .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('TLOU1.jpg');
 }
 .card-item.the-last-of-us-2 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('TLOU2.jpg');
 }
 .card-item.call-of-duty .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('COD6.jpg');
 }
 .card-item.cyberpunk-2077 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('Cyberpunk2077.jpg');
 }
 .card-item.red-dead-redemption-2 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('RDR2.jpg');
 }
 .card-item.baldurs-gate-3 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('BaldursGate3.jpg');
 }
 .card-item.helldivers-2 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('helldivers2.jpg');
 }
 .card-item.black-myth-wukong .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('BlackMythWukong.jpg');
 }
 .card-item.mortal-kombat-1 .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('mortalkombat1.jpg');
 }
 .card-item.dragon-ball-sparking-zero .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('DragonBallSparkingZero.jpg');
 }
 .card-item.the-binding-of-isaac .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('TBOI.jpg');
 }
 .card-item.doom-dark-ages .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('DDA.jpg');
 }
 .card-item.ghost-of-tsushima .card-image {
-    background-image: url('/images/developer.jpg');
+    background-image: url('GOT.jpg');
 }
 
 /* Categoría */

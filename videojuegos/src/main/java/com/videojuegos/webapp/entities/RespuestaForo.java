@@ -1,36 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.videojuegos.webapp.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "RespuestaForo")
+@Table(name = "respuestas_foro")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class RespuestaForo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRespuesta;
-    
-    @ManyToOne
-    @JoinColumn(name = "IdPost")
-    private Foro post;
-    
-    @ManyToOne
-    @JoinColumn(name = "IdUsuario")
-    private Usuario usuario;
-    
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "La respuesta no puede estar vacía")
+    @Lob
     private String contenido;
-    
-    @Column(nullable = false)
-    private LocalDateTime fecha = LocalDateTime.now();
+
+    @ManyToOne
+    private Usuario autor;
+
+    @ManyToOne
+    private Foro foro;
+
+    private LocalDateTime creado;
 }

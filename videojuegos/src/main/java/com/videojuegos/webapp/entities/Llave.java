@@ -1,31 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.videojuegos.webapp.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "Llave")
+@Table(name = "llaves")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Llave {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idLlave;
-    
-    @Column(nullable = false, unique = true, length = 100)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "El código de la llave es obligatorio")
+    @Column(nullable = false, unique = true)
     private String codigo;
-    
+
     @ManyToOne
-    @JoinColumn(name = "IdJuego")
     private Juego juego;
-    
-    @Column(nullable = false)
-    private boolean disponible = true;
+
+    private boolean vendida = false;
 }

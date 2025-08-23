@@ -1,32 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.videojuegos.webapp.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import java.util.List;
+import jakarta.validation.constraints.*;
+import lombok.*;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "Plataforma")
+@Table(name = "plataformas")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Plataforma {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPlataforma;
-    
-    @Column(nullable = false, length = 50)
-    private String nombre;
-    
-    @Column(name = "UrlActivacion")
-    private String urlActivacion;
-    
-    @OneToMany(mappedBy = "plataforma", cascade = CascadeType.ALL)
-    private List<Juego> juegos;
-}
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @NotBlank(message = "El nombre de la plataforma es obligatorio")
+    private String nombre;
+}

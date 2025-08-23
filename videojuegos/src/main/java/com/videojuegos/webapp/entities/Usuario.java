@@ -1,49 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.videojuegos.webapp.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import java.time.LocalDateTime;
-import java.util.List;
+import jakarta.validation.constraints.*;
+import lombok.*;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "Usuario")
+@Table(name = "usuarios")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
-    
-    @Column(nullable = false, length = 100)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
-    
-    @Column(nullable = false, unique = true, length = 100)
+
+    @NotBlank(message = "El apellido es obligatorio")
+    private String apellido;
+
+    @NotBlank(message = "El correo es obligatorio")
+    @Email(message = "Correo inválido")
+    @Column(unique = true, nullable = false)
     private String correo;
-    
-    @Column(nullable = false)
-    private String contraseña;
-    
-    @Column(name = "FechaRegistro")
-    private LocalDateTime fechaRegistro = LocalDateTime.now();
-    
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Rol rol = Rol.cliente;
-    
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Pedido> pedidos;
-    
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Opinion> opiniones;
-    
-    public enum Rol {
-        cliente, admin
-    }
+
+    @NotBlank(message = "La contraseña es obligatoria")
+    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
+    private String password;
+
+    // "ROLE_USER" o "ROLE_ADMIN"
+    private String rol;
 }

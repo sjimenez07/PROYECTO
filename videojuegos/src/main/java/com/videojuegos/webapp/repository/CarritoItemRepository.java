@@ -9,9 +9,10 @@ import com.videojuegos.webapp.entities.Carrito;
 import com.videojuegos.webapp.entities.Juego;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.Optional;
+import java.util.List;
 
-@Repository
+
 public interface CarritoItemRepository extends JpaRepository<CarritoItem, Long> {
-    Optional<CarritoItem> findByCarritoAndJuego(Carrito carrito, Juego juego);
+    List<CarritoItem> findByUsuario(Usuario usuario);
+    void deleteByUsuarioAndJuego(Usuario usuario, Juego juego);
 }

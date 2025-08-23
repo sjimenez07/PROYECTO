@@ -1,0 +1,109 @@
+<!-- ACTUALIZAR juegos/detail.html para mostrar imagen -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${juego.titulo}">Detalle del Juego</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">🎮 GameStore</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">Inicio</a>
+                <a class="nav-link" href="/juegos">Juegos</a>
+                <a class="nav-link" href="/foro">Foro</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="/juegos">Juegos</a></li>
+                <li class="breadcrumb-item active" th:text="${juego.titulo}">Juego</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Imagen del juego -->
+                <div class="card">
+                    <div th:if="${juego.imagen != null}">
+                        <img th:src="@{/juegos/imagen/{id}(id=${juego.id})}" 
+                             class="card-img-top" alt="Imagen del juego" style="height: 300px; object-fit: cover;">
+                    </div>
+                    <div th:if="${juego.imagen == null}" class="card-img-top bg-light d-flex align-items-center justify-content-center" 
+                         style="height: 300px;">
+                        <i class="fas fa-gamepad fa-5x text-muted"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title" th:text="${juego.titulo}">Título del Juego</h1>
+                        
+                        <div class="mb-3">
+                            <span class="badge bg-info" th:text="${juego.plataforma.nombre}">Plataforma</span>
+                        </div>
+                        
+                        <p class="card-text" th:text="${juego.descripcion}" style="white-space: pre-wrap;">Descripción del juego</p>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <h4 class="text-success">
+                                    <i class="fas fa-tag"></i> $<span th:text="${juego.precio}">0.00</span>
+                                </h4>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-0">
+                                    <strong>Stock disponible:</strong> 
+                                    <span class="badge" th:classappend="${juego.stock > 0 ? 'bg-success' : 'bg-danger'}" 
+                                          th:text="${juego.stock}">0</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex gap-2">
+                            <form sec:authorize="isAuthenticated()" th:action="@{/carrito/agregar/{id}(id=${juego.id})}" 
+                                  method="post" class="d-inline">
+                                <button type="submit" class="btn btn-success btn-lg" th:if="${juego.stock > 0}">
+                                    <i class="fas fa-shopping-cart"></i> Agregar al Carrito
+                                </button>
+                            </form>
+                            <span th:if="${juego.stock <= 0}" class="btn btn-secondary btn-lg disabled">
+                                <i class="fas fa-times-circle"></i> Sin Stock
+                            </span>
+                            
+                            <div sec:authorize="!isAuthenticated()">
+                                <a href="/login" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-sign-in-alt"></i> Inicia Sesión para Comprar
+                                </a>
+                            </div>
+                            
+                            <a href="/juegos" class="btn btn-outline-secondary btn-lg">
+                                <i class="fas fa-arrow-left"></i> Volver
+                            </a>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle"></i>
+                                <strong>Entrega digital:</strong> Recibirás tu clave del juego inmediatamente después del pago.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

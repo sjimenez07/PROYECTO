@@ -2,67 +2,44 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.videojuegos.webapp.service;
+package com.videojuegos.service;
 
-import com.videojuegos.webapp.entities.*;
-import com.videojuegos.webapp.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.videojuegos.entities.CarritoItem;
+import com.videojuegos.entities.Juego;
+import com.videojuegos.entities.Usuario;
+import com.videojuegos.repository.CarritoItemRepository;
+import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CarritoService {
-    
-    @Autowired
-    private CarritoRepository carritoRepository;
-    
-    @Autowired
-    private CarritoItemRepository carritoItemRepository;
-    
-    public Carrito obtenerOCrearCarrito(Usuario usuario) {
-        Optional<Carrito> carritoExistente = carritoRepository.findByUsuario(usuario);
-        if (carritoExistente.isPresent()) {
-            return carritoExistente.get();
-        }
-        
-        Carrito nuevoCarrito = new Carrito();
-        nuevoCarrito.setUsuario(usuario);
-        return carritoRepository.save(nuevoCarrito);
-    }
-    
-    @Transactional
-    public void agregarJuego(Usuario usuario, Juego juego, int cantidad) {
-        Carrito carrito = obtenerOCrearCarrito(usuario);
-        
-        Optional<CarritoItem> itemExistente = carritoItemRepository.findByCarritoAndJuego(carrito, juego);
-        
-        if (itemExistente.isPresent()) {
-            CarritoItem item = itemExistente.get();
-            item.setCantidad(item.getCantidad() + cantidad);
-            carritoItemRepository.save(item);
+    private final CarritoItemRepository repo;
+    public CarritoService(CarritoItemRepository repo){ this.repo = repo; }
+
+    public List<CarritoItem> getCarrito(Usuario u){ return repo.findByUsuario(u); }
+
+    public void addToCarrito(Usuario u, Juego j, int cantidad){
+        List<CarritoItem> items = repo.findByUsuario(u);
+        Optional<CarritoItem> existente = items.stream().filter(ci -> ci.getJuego().equals(j)).findFirst();
+        if(existente.isPresent()){
+            CarritoItem ci = existente.get();
+            ci.setCantidad(ci.getCantidad() + cantidad);
+            repo.save(ci);
         } else {
-            CarritoItem nuevoItem = new CarritoItem();
-            nuevoItem.setCarrito(carrito);
-            nuevoItem.setJuego(juego);
-            nuevoItem.setCantidad(cantidad);
-            carritoItemRepository.save(nuevoItem);
+            CarritoItem ci = new CarritoItem();
+            ci.setUsuario(u);
+            ci.setJuego(j);
+            ci.setCantidad(cantidad);
+            repo.save(ci);
         }
     }
-    
-    @Transactional
-    public void eliminarJuego(Usuario usuario, Juego juego) {
-        Carrito carrito = obtenerOCrearCarrito(usuario);
-        Optional<CarritoItem> item = carritoItemRepository.findByCarritoAndJuego(carrito, juego);
-        item.ifPresent(carritoItemRepository::delete);
+
+    public void removeFromCarrito(Usuario u, Juego j){
+        repo.deleteByUsuarioAndJuego(u,j);
     }
-    
-    @Transactional
-    public void limpiarCarrito(Usuario usuario) {
-        Carrito carrito = obtenerOCrearCarrito(usuario);
-        if (carrito.getItems() != null) {
-            carrito.getItems().clear();
-            carritoRepository.save(carrito);
-        }
+
+    public void clear(Usuario u){
+        repo.findByUsuario(u).forEach(repo::delete);
     }
 }

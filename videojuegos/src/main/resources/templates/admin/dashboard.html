@@ -1,0 +1,81 @@
+<!-- src/main/resources/templates/admin/dashboard.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administración</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/admin">🎮 Admin Panel</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">Volver a la Tienda</a>
+                <a class="nav-link" href="/logout">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Panel de Administración</h1>
+        
+        <!-- Estadísticas -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-gamepad fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Juegos</h5>
+                        <h2 class="text-primary" th:text="${totalJuegos}">0</h2>
+                        <a href="/admin/juegos" class="btn btn-primary">Gestionar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Usuarios</h5>
+                        <h2 class="text-success" th:text="${totalUsuarios}">0</h2>
+                        <a href="/admin/usuarios" class="btn btn-success">Gestionar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-comments fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Temas Foro</h5>
+                        <h2 class="text-warning" th:text="${totalTemasForo}">0</h2>
+                        <a href="/admin/foros" class="btn btn-warning">Gestionar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Acciones Rápidas -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Acciones Rápidas</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="/admin/juegos/crear" class="btn btn-primary me-2">
+                            <i class="fas fa-plus"></i> Crear Juego
+                        </a>
+                        <a href="/admin/usuarios/crear" class="btn btn-success me-2">
+                            <i class="fas fa-user-plus"></i> Crear Usuario
+                        </a>
+                        <a href="/foro" class="btn btn-info">
+                            <i class="fas fa-eye"></i> Ver Foro
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

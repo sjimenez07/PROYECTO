@@ -1,39 +1,81 @@
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ingresa Sesión</title>
-        <link th:href="@{/css/login.css}" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    </head>
-    <body>
-        <div class="wrapper">
-            <form action="#">
-                <h2>Log In</h2>
-                <div class="input-field">
-                    <input type="text" required>
-                    <label>Ingresa el Email</label>
-                </div>
-                <div class="input-field">
-                    <input type="password" required>
-                    <label>Ingresa la contraseña</label>    
-                </div>
-                <div class="Olvida">
-                    <label for="remember">
-                        <input type="checkbox" id="Recordar">
-                        <p>Recuerdame</p>
-                    </label>
-                    <a href="#">Olvidaste tu contraseña?</a>
-                </div>
-                <button type="submit">
-                    Log In
-                    <i class="bi bi-caret-right-fill" aria-hidden="true"></i>
-                </button>
-                <div class="register">
-                    <p>¿No tienes una cuenta? <a href="#">Registrarse</a></p>
-                </div>
-            </form>
+<!-- ACTUALIZAR NAVEGACIÓN EN index.html -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">🎮 GameStore</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/juegos">Juegos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/foro">Foro</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" href="/carrito">
+                        <i class="fas fa-shopping-cart"></i> Carrito
+                    </a>
+                </li>
+            </ul>
+            
+            <ul class="navbar-nav">
+                <!-- Menu Admin -->
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-cog"></i> Admin
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/admin">
+                            <i class="fas fa-dashboard"></i> Panel Principal
+                        </a></li>
+                        <li><a class="dropdown-item" href="/admin/juegos">
+                            <i class="fas fa-gamepad"></i> Gestionar Juegos
+                        </a></li>
+                        <li><a class="dropdown-item" href="/admin/usuarios">
+                            <i class="fas fa-users"></i> Gestionar Usuarios
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/admin/foros">
+                            <i class="fas fa-comments"></i> Moderar Foro
+                        </a></li>
+                    </ul>
+                </li>
+                
+                <!-- Usuario no autenticado -->
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link" href="/register">
+                        <i class="fas fa-user-plus"></i> Registro
+                    </a>
+                </li>
+                
+                <!-- Usuario autenticado -->
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user"></i> <span sec:authentication="name">Usuario</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/carrito">
+                            <i class="fas fa-shopping-cart"></i> Mi Carrito
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </body>
-</html>
-<script>
-</script>
+    </div>
+</nav>

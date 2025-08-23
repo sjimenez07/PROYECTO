@@ -1,39 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.videojuegos.webapp.entities;
+package com.ProyectoTIENDA.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "Foro")
+@Table(name = "foros")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Foro {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPost;
-    
-    @Column(nullable = false)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "El título es obligatorio")
     private String titulo;
-    
-    @Column(nullable = false, columnDefinition = "TEXT")
+
+    @NotBlank(message = "El contenido no puede estar vacío")
+    @Lob
     private String contenido;
-    
+
     @ManyToOne
-    @JoinColumn(name = "IdUsuario")
-    private Usuario usuario;
+    private Usuario autor;
+
+    private LocalDateTime creado;
+
+    // Uso de RespuestaForo para mantener coherencia con los repositorios/controlladores previos
+    @OneToMany(mappedBy = "foro", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<RespuestaForo> respuestas = new ArrayList<>();
     
-    @Column(nullable = false)
-    private LocalDateTime fecha = LocalDateTime.now();
     
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<RespuestaForo> respuestas;
 }
